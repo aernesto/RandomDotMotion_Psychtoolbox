@@ -10,7 +10,7 @@ function main_dots_binary_RT()
 % written by Ariel Zylberberg (ariel.zylberberg@gmail.com)
 
 %%
-addpath('mpsych_v1.0/')
+%addpath('mpsych_v1.0/')
 TASK_ID = 20;
 
 workspace

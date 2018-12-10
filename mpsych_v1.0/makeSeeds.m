@@ -25,7 +25,7 @@ end
 n = length(idx_conditions);
 
 u = unique(idx_conditions);
-r = Rtable(idx_conditions);
+r = 1; % just to avoid a bug.  Rtable(idx_conditions);
 
 seeds = nan(size(idx_conditions));
 
@@ -38,7 +38,7 @@ elseif type==1
         uni_seeds = randi(intmax,nn,1);
         ss = repmat(uni_seeds,1,Nreps);
         ss = ss(:);
-        ss = shuffle(ss);
+        ss = Shuffle(ss);
         ss = ss(1:n);
         seeds = ss;
         

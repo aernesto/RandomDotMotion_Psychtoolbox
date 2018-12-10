@@ -10,7 +10,7 @@ function main_dots_binary_VD()
 % written by Ariel Zylberberg (ariel.zylberberg@gmail.com)
 
 %%
-addpath('mpsych_v1.0/')
+%addpath('mpsych_v1.0/') line not required with TbTb
 TASK_ID = 10;
 
 workspace
@@ -43,9 +43,7 @@ try
     
     % set eyetracker
     Eye = EyeTrackerClass();
-    if isequal(screenInfo.computer,'Ariels-MacBook-Pro.local')
-        Eye.setPars('dummymode',1);
-    end
+    Eye.setPars('dummymode',1);
     
     Mouse = MouseClass();
     
@@ -71,7 +69,7 @@ try
         cy+delta*sin((-rotation+180)*2*pi/360),20,[255 0 0]);
     
     %sonido feedback
-    Audio = AudioPlayClass('files',{'ding.wav','signoff.wav','secalert.wav','click.wav'});
+    %Audio = AudioPlayClass('files',{'ding.wav','signoff.wav','secalert.wav','click.wav'});
 
     key = KeysClass();
     targets.asocToKey(1,'k')
@@ -97,7 +95,7 @@ try
     seeds = makeSeeds(idx_conditions,1,2);
     
     % setapear el eye tracker
-    Eye.setupEyetracker(screenInfo);
+    %Eye.setupEyetracker(screenInfo);
     
     %
     WaitSecs(3);
@@ -172,7 +170,7 @@ try
                     Screen('FillRect', curWindow, screenInfo.bckgnd)
                     fixation.draw(screenInfo);
                     Screen('Flip', curWindow,0,dontclear);
-                    Eye.Message(nextstep)
+                    %Eye.Message(nextstep)
                     
                     [ret, func_ret, waited_time] = WaitUntil(@fixation.lostFixation, {screenInfo,Eye,key,Mouse}, times.dat.fix_on, 0.001, curWindow, 1);
                     if ret==1 %perdio fijacion
@@ -188,7 +186,7 @@ try
                     fixation.draw(screenInfo);
                     targets.draw(screenInfo);
                     Screen('Flip', curWindow,0,dontclear);
-                    Eye.Message(nextstep)
+                    %Eye.Message(nextstep)
                     
                     [ret, func_ret, waited_time] = WaitUntil(@fixation.lostFixation, {screenInfo,Eye,key,Mouse}, times.dat.fix_tar_on, 0.001, curWindow, 1);
                     
@@ -310,11 +308,11 @@ try
                     
                     switch trial_result
                         case 'CORRECT'
-                            Audio.playSound('ding.wav');
+                            %Audio.playSound('ding.wav');
                             WaitSecs(times.dat.intertrial);
                             
                         case 'WRONG'
-                            Audio.playSound('signoff.wav');
+                            %Audio.playSound('signoff.wav');
                             WaitSecs(times.dat.intertrial + times.dat.error_timeout);
                             
                         case 'FIXBREAK'
@@ -365,12 +363,12 @@ try
     Eye.StopAndGetFile(filename);
     Priority(0);
     sca
-    Audio.close();
+    %Audio.close();
     
 catch
     sca
     Priority(0);
-    Audio.close();
+    %Audio.close();
     ple
 end
 

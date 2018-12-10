@@ -10,11 +10,11 @@ for i=2:length(c)
     str = [str,',c{',num2str(i),'}'];
 end
 
-uni_conditions  = eval(['combvec(',str,')']);
+uni_conditions  = eval(['CombVec(',str,')']);
 idx_conditions  = [1:size(uni_conditions,1)]';
 idx_conditions = repmat(idx_conditions,nTrialsPerCondition,1);
 
-idx_conditions = shuffle(idx_conditions);
+idx_conditions = Shuffle(idx_conditions);
 %conditionMatrix = repmat(uni_conditions,nTrialsPerCondition,1);
 conditionMatrix = uni_conditions(idx_conditions,:);
 

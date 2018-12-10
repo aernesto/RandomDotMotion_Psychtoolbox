@@ -26,6 +26,7 @@ mfilename
 [~, computer] = system('hostname');
 screenInfo.computer = computer(1:end-1);
 
+isLocalComputer=true;
 if isLocalComputer
     Screen('Preference', 'SkipSyncTests', 1);
 end
